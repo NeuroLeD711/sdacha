@@ -2,9 +2,11 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# Добавили слеш в конце назначения (./)
 COPY frontend/package*.json ./
 RUN npm ci
 
+# Здесь тоже лучше использовать ./ для надежности
 COPY frontend/ ./
 RUN npm run build
 
