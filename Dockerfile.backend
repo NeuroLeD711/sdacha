@@ -5,7 +5,8 @@ WORKDIR /app
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY backend/ frontend/dist/ ./uploads/ instance/
+# Копируем только исходный код бэкенда в рабочую директорию /app
+COPY backend/ .
 
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
